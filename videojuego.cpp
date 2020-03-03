@@ -99,6 +99,11 @@ void Videojuego::sort()
     ::sort(arreglo.begin(), arreglo.end());
 }
 
+void Videojuego::sort_salud()
+{
+    ::sort(arreglo.begin(), arreglo.end(), [](const Personaje &a, const Personaje &b){return a.getSalud() < b.getSalud();});
+}
+
 Personaje *Videojuego::buscar(const Personaje &p)
 {
 //    vector<Personaje>::iterator it;

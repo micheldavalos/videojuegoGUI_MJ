@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>514</width>
-    <height>502</height>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,28 +15,24 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
-        <string>Tab 1</string>
+        <string>Agregar</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>Tipo:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="2" column="0" colspan="2">
          <widget class="QLabel" name="label_3">
           <property name="text">
            <string>Salud:</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
+        <item row="2" column="2">
          <widget class="QSpinBox" name="salud">
           <property name="maximum">
            <number>100</number>
@@ -46,20 +42,17 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="nombre"/>
+        <item row="1" column="2">
+         <widget class="QLineEdit" name="tipo"/>
         </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_4">
+        <item row="1" column="0" colspan="2">
+         <widget class="QLabel" name="label_2">
           <property name="text">
-           <string>Fuerza:</string>
+           <string>Tipo:</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="1">
-         <widget class="QLineEdit" name="tipo"/>
-        </item>
-        <item row="3" column="1">
+        <item row="3" column="2">
          <widget class="QSpinBox" name="fuerza">
           <property name="maximum">
            <number>100</number>
@@ -69,24 +62,60 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="0" column="3" rowspan="6">
+         <widget class="QPlainTextEdit" name="salida"/>
+        </item>
+        <item row="0" column="0" colspan="2">
          <widget class="QLabel" name="label">
           <property name="text">
            <string>Nombre:</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="2" rowspan="6">
-         <widget class="QPlainTextEdit" name="salida"/>
+        <item row="3" column="0" colspan="2">
+         <widget class="QLabel" name="label_4">
+          <property name="text">
+           <string>Fuerza:</string>
+          </property>
+         </widget>
         </item>
-        <item row="4" column="0" colspan="2">
+        <item row="0" column="2">
+         <widget class="QLineEdit" name="nombre"/>
+        </item>
+        <item row="4" column="0" colspan="3">
          <widget class="QPushButton" name="agregar">
           <property name="text">
            <string>Agregar</string>
           </property>
          </widget>
         </item>
-        <item row="5" column="0" colspan="2">
+        <item row="6" column="0" colspan="4">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Inicializar</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <widget class="QSpinBox" name="n">
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>1000</number>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="crear">
+             <property name="text">
+              <string>Crear</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="3">
          <widget class="QPushButton" name="mostrar">
           <property name="text">
            <string>Mostrar</string>
@@ -97,8 +126,34 @@
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Tab 2</string>
+        <string>Tabla</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="lineEdit_buscar"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="buscar">
+            <property name="text">
+             <string>Buscar</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="tabla"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="mostrar_tabla">
+          <property name="text">
+           <string>Mostrar</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -120,7 +175,15 @@
     <addaction name="actionAbrir"/>
     <addaction name="actionGuardar"/>
    </widget>
+   <widget class="QMenu" name="menuSort">
+    <property name="title">
+     <string>Sort</string>
+    </property>
+    <addaction name="actionNombre"/>
+    <addaction name="actionSalud"/>
+   </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuSort"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionAbrir">
@@ -137,6 +200,16 @@
    </property>
    <property name="shortcut">
     <string>Meta+S</string>
+   </property>
+  </action>
+  <action name="actionNombre">
+   <property name="text">
+    <string>Nombre</string>
+   </property>
+  </action>
+  <action name="actionSalud">
+   <property name="text">
+    <string>Salud</string>
    </property>
   </action>
  </widget>

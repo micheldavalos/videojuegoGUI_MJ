@@ -25,6 +25,7 @@ public:
     void inicializar(const Personaje &per, size_t n);
     void eliminar(size_t p);
     void sort();
+    void sort_salud();
     Personaje* buscar(const Personaje &p);
 
     Personaje& operator[](size_t p)
